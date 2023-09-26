@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid mt-5 " style="width: max-content;">
+        <form onsubmit="return check();">
+            <table class="table table-borderless">
+                <tr>
+                    <td>
+                        <label for="i1" class="form-label">Name:</label>
+                    </td>
+                    <td>
+                        <input id="i1" type="text" class="form-control">
+                    </td>
+                    <td>
+                        <div id="d1" class="text-danger"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="i2" class="form-label">Email:</label>
+                    </td>
+                    <td>
+                        <input id="i2" type="email" class="form-control">
+                    </td>
+                    <td>
+                        <div id="d2" class="text-danger"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="i3" class="form-label">Website:</label>
+                    </td>
+                    <td>
+                        <input id="i3" type="text" class="form-control">
+                    </td>
+                    <td>
+                        <div id="d3" class="text-danger"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="i4" class="form-label">Message:</label>
+                    </td>
+                    <td>
+                        <textarea id="i4" class="form-control"></textarea>
+                    </td>
+                    <td>
+                        <div id="d4" class="text-danger"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <script>
+        function check() {
+            let name = document.getElementById("i1");
+            let email = document.getElementById("i2");
+            let website = document.getElementById("i3");
+            let message = document.getElementById("i4");
+            let f = 0;
+
+            var nameregex = /^[a-zA-Z ]+$/
+            if (!name.value.match(nameregex)) {
+                document.getElementById("d1").textContent = "This field is required";
+                name.classList.add("border", "border-danger");
+                f = 1; 
+            } else {
+                document.getElementById("d1").textContent = "";
+                name.classList.remove("border", "border-danger");
+            }
+
+            var emailregex = /^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]+$/
+            if (!email.value.match(emailregex)) {
+                document.getElementById("d2").textContent = "A valid email address is required";
+                email.classList.add("border", "border-danger");
+                f = 1;
+            } else {
+                document.getElementById("d2").textContent = "";
+                email.classList.remove("border", "border-danger");
+            }
+
+            var webregex = /^(www|https:\/\/www)?\.[a-zA-Z0-9]+\.[a-zA-Z]+$/
+            if (!website.value.match(webregex)) {
+                document.getElementById("d3").textContent = "A valid URL is required";
+                website.classList.add("border", "border-danger");
+                f = 1;
+            } else {
+                document.getElementById("d3").textContent = "";
+                website.classList.remove("border", "border-danger");
+            }
+
+            var messregex = /^[a-zA-Z0-9]+$/
+            if (!message.value.match(messregex)) {
+                document.getElementById("d4").textContent = "This field is required";
+                message.classList.add("border", "border-danger");
+                f = 1;
+            } else {
+                document.getElementById("d4").textContent = "";
+                message.classList.remove("border", "border-danger");
+            }
+            if (f === 1)
+                return false;
+            return true; 
+        }
+    </script>
+</body>
+</html>

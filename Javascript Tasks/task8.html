@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 7</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        td {
+            padding: 5px;
+        }
+
+        .feedback {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4 pt-3" style="width: max-content ;background: rgb(63,94,251); background: radial-gradient(at top, rgba(241, 238, 4, 0.511) 0%, rgba(252, 70, 106, 0.658) 100%);">
+        <h2 class="text-center text-primary mt-4">Registration Form</h2>
+        <form>
+            <table>
+                <tr>
+                    <td class="text-end"><label for="firstname" class="form-label">First Name</label></td>
+                    <td><input class="form-control" type="text" id="firstname" required
+                            onkeyup="checkInputLength(this, 'firstname_feedback')"></td>
+                    <td id="firstname_feedback" class="feedback"></td>
+                </tr>
+                <tr>
+                    <td class="text-end"><label for="lastname" class="form-label">Last Name</label></td>
+                    <td><input class="form-control" type="text" id="lastname" required
+                            onkeyup="checkInputLength(this, 'lastname_feedback')"></td>
+                    <td id="lastname_feedback" class="feedback"></td>
+                </tr>
+                <tr>
+                    <td class="text-end"><label for="email" class="form-label">Email</label></td>
+                    <td><input class="form-control" type="email" required
+                            onkeyup="checkInputLength(this, 'email_feedback')"></td>
+                    <td id="email_feedback" class="feedback"></td>
+                </tr>
+                <tr>
+                    <td class="text-end"><label for="password" class="form-label">Password</label></td>
+                    <td><input class="form-control" type="password" id="password" required
+                            onkeyup="checkInputLength(this, 'password_feedback');"></td>
+                    <td id="password_feedback" class="feedback"></td>
+                </tr>
+                <tr>
+                    <td class="text-end"><label for="repassword" class="form-label">Re-enter Password</label></td>
+                    <td><input class="form-control" type="password" id="repassword" required onkeyup="checkPassword()"></td>
+                    <td id="repassword_feedback" class="feedback"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2" class="text-end"><label for="gender" class="form-label">Gender</label></td>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="Male" required>
+                            <label class="form-check-label" for="male">Male</label>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="Female"
+                                required>
+                            <label class="form-check-label" for="female">Female</label>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="text-end"><label for="age" class="form-label">Age</label></td>
+                    <td><input class="form-control" type="number" required></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="text-end"><label for="phone" class="form-label">Phone Number</label></td>
+                    <td><input class="form-control" type="tel" required></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="text-end"><label for="address" class="form-label">Address</label></td>
+                    <td><textarea class="form-control" name="address" required></textarea></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="text-end"><label for="state" class="form-label">State</label></td>
+                    <td><input class="form-control" type="text" required></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="text-end"><label for="country" class="form-label">Country</label></td>
+                    <td>
+                        <select class="form-select" name="country" required>
+                            <option value="" selected disabled>Choose a country</option>
+                            <option value="United States">United States</option>
+                            <option value="Canada">Canada</option>
+                            <option value="India">India</option>
+                            <option value="Germany">Germany</option>
+                        </select>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="text-end"><label for="languages" class="form-label">Languages Known</label></td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="languages" value="English"
+                                id="english">
+                            <label class="form-check-label" for="english">English</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="languages" value="Kannada"
+                                id="kannada">
+                            <label class="form-check-label" for="kannada">Kannada</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="languages" value="Hindi" id="hindi">
+                            <label class="form-check-label" for="hindi">Hindi</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="languages" value="Telugu" id="telugu">
+                            <label class="form-check-label" for="telugu">Telugu</label>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" checked required id="declaration">
+                            <label class="form-check-label" for="declaration">Hereby I declare all the given details are
+                                true</label>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <p id="login" class="text-end">Log in to <a href="https://ethnus.com/"
+                                target="_blank">Ethnus</a> website</p>
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+            <div id="btn" class="text-center">
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function checkInputLength(input, feedbackId) {
+            const value = input.value;
+            const feedback = document.getElementById(feedbackId);
+
+            if (value.length === 0) {
+                feedback.textContent = 'EMPTY';
+            } else if (value.length < 4) {
+                feedback.textContent = 'POOR';
+            } else if (value.length >= 3 && value.length <= 7) {
+                feedback.textContent = 'MEDIUM';
+            } else {
+                feedback.textContent = 'STRONG';
+            }
+        }
+
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('repassword').value;
+            const passwordFeedback = document.getElementById('password_feedback');
+            const repasswordFeedback = document.getElementById('repassword_feedback');
+
+            var str1 = '';
+            var str2 = '';
+
+            if (confirmPassword.length === 0) {
+                str1 = 'EMPTY';
+            } else if (confirmPassword.length < 4) {
+                str1 = 'POOR';
+            } else if (confirmPassword.length >= 4 && confirmPassword.length <= 7) {
+                str1 = 'MEDIUM';
+            } else {
+                str1 = 'STRONG';
+            }
+
+            if (password === confirmPassword) {
+                str2 = '';
+            } else {
+                str2 = 'MISMATCH';
+            }
+
+            repasswordFeedback.textContent = str1 + ' OR ' + str2;
+        }
+    </script>
+</body>
+
+</html>

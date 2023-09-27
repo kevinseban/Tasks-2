@@ -16,12 +16,12 @@
                     <div class="input-group-text"><i class="fas fa-user"></i></div>
                     <input type="text" class="form-control" id="username" placeholder="Username">
                 </div>
-                <div id="usernameError" class="text-danger text-center"></div>
+                <div id="usernameError" class="text-danger text-center mt-1">&nbsp;</div>
                 <div class="input-group mt-3">
                     <div class="input-group-text"><i class="fas fa-lock"></i></div>
                     <input type="password" class="form-control" id="password" placeholder="Password">
                 </div>
-                <div id="passwordError" class="text-danger text-center"></div>
+                <div id="passwordError" class="text-danger text-center mt-1">&nbsp;</div>
                 <button type="submit" class="btn btn-primary w-100 fs-6 mt-3">Log In</button>
             </form>
             <div class="mt-3">
@@ -47,7 +47,7 @@
             passwordError.innerHTML = "";
 
             if (username.value.length < 5) {
-                usernameError.innerHTML = "Username must be at least 5 characters long.";
+                usernameError.innerHTML = "Must be at least 5 characters long.";
                 username.classList.add("border", "border-danger"); 
                 f = 1;
             } else {
@@ -55,7 +55,7 @@
             }
 
             if (password.value.length < 5) {
-                passwordError.innerHTML = "Password must be at least 5 characters long.";
+                passwordError.innerHTML = "Must be at least 5 characters long.";
                 password.classList.add("border", "border-danger"); 
                 f = 1;
             } else {
